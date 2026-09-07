@@ -1,0 +1,11 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}{{ producto.nombre }}{% endblock %}
+
+{% block contenido %}
+    <h2>{{ producto.nombre }}</h2>
+    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    <p><strong>Stock:</strong> {{ producto.stock }}</p>
+    <p><a href="{% url 'home' %}">Volver al catálogo</a></p>
+{% endblock %}

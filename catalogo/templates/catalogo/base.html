@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Ferretería El Tornillo Feliz{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Ferretería El Tornillo Feliz</h1>
+    </header>
+
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ferretería El Tornillo Feliz</p>
+    </footer>
+</body>
+</html>
