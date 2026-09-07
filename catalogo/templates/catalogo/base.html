@@ -3,11 +3,45 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block titulo %}Ferretería El Tornillo Feliz{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Ferretería Harcha{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Ferretería El Tornillo Feliz</h1>
+    <header class="navbar">
+        <div class="navbar-top">
+            <a href="{% url 'home' %}" class="marca">
+                <img src="{% static 'catalogo/img/logo.png' %}" alt="Logo Ferretería Harcha" class="logo">
+                <span>Ferretería <strong>Harcha</strong></span>
+            </a>
+
+            <div class="barra-busqueda-top">
+                <span class="icono-buscar">🔍</span>
+                <input type="text" id="buscador" placeholder="Buscar productos...">
+            </div>
+
+            <div class="navbar-acciones">
+                <div class="accion-item">
+                    <span class="icono">📍</span>
+                    <span class="texto-accion">
+                        Ingresa<br><strong>Tu ubicación</strong>
+                    </span>
+                </div>
+                <div class="accion-item" id="btn-login">
+                    <span class="icono">👤</span>
+                    <span class="texto-accion">
+                        Hola,<br><strong>Inicia Sesión</strong>
+                    </span>
+                </div>
+                <div class="accion-item">
+                    <span class="icono">🛒</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar-categorias">
+            {% block subnav %}{% endblock %}
+        </nav>
     </header>
 
     <main>
@@ -16,7 +50,13 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Ferretería El Tornillo Feliz</p>
+        <div class="footer-contenido">
+            <strong>Ferretería Harcha</strong>
+            <span>Herramientas y materiales para construir tus ideas.</span>
+            <small>&copy; 2026 Ferretería Harcha</small>
+        </div>
     </footer>
+
+    <script src="{% static 'catalogo/js/main.js' %}"></script>
 </body>
 </html>

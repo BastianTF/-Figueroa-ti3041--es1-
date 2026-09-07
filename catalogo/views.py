@@ -1,5 +1,6 @@
 import json
 import os
+import random
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
@@ -13,8 +14,17 @@ def cargar_productos():
 
 def home(request):
     productos = cargar_productos()
+    total_productos = len(productos)
+    productos_disponibles = sum(1 for producto in productos if producto['stock'] > 0)
+    productos_sin_stock = total_productos - productos_disponibles
+    random.shuffle(productos)
+    categorias = sorted({p['categoria'] for p in productos})
     contexto = {
         'productos': productos,
+        'categorias': categorias,
+        'total_productos': total_productos,
+        'productos_disponibles': productos_disponibles,
+        'productos_sin_stock': productos_sin_stock,
     }
     return render(request, 'catalogo/lista.html', contexto)
 
