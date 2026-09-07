@@ -3,11 +3,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block titulo %}Ferretería El Tornillo Feliz{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Ferretería Harcha{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
 </head>
 <body>
     <header>
-        <h1>Ferretería El Tornillo Feliz</h1>
+        <div class="header-contenido">
+            <img src="{% static 'catalogo/img/logo.png' %}" alt="Logo Ferretería Harcha" class="logo">
+            <h1>Ferretería Harcha</h1>
+        </div>
     </header>
 
     <main>
@@ -16,7 +21,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Ferretería El Tornillo Feliz</p>
+        <p>&copy; 2026 Ferretería Harcha</p>
     </footer>
-</body>
-</html>
+
+    <script src="{%

@@ -1,11 +1,26 @@
 {% extends 'catalogo/base.html' %}
 
-{% block titulo %}{{ producto.nombre }}{% endblock %}
+{% block titulo %}Catálogo{% endblock %}
 
 {% block contenido %}
-    <h2>{{ producto.nombre }}</h2>
-    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
-    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-    <p><strong>Stock:</strong> {{ producto.stock }}</p>
-    <p><a href="{% url 'home' %}">Volver al catálogo</a></p>
+    <h2>Catálogo de Productos</h2>
+
+    <input type="text" id="buscador" placeholder="🔍 Buscar producto por nombre...">
+
+    <div class="grid-productos" id="tabla-productos">
+        {% for producto in productos %}
+        <div class="card-producto {% if producto.stock == 0 %}sin-stock{% endif %}">
+            <span class="categoria-badge">{{ producto.categoria }}</span>
+            <h3><a href="{% url 'detalle' producto.id %}">{{ producto.nombre }}</a></h3>
+            <p class="precio">${{ producto.precio }}</p>
+            <p class="stock {% if producto.stock == 0 %}agotado{% endif %}">
+                {% if producto.stock == 0 %}
+                    Sin stock
+                {% else %}
+                    Stock: {{ producto.stock }} unidades
+                {% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

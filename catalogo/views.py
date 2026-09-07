@@ -1,5 +1,6 @@
 import json
 import os
+import random
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
@@ -11,10 +12,20 @@ def cargar_productos():
         return json.load(archivo)
 
 
+def dividir_en_columnas(productos, n_columnas=3):
+    columnas = [[] for _ in range(n_columnas)]
+    for i, producto in enumerate(productos):
+        columnas[i % n_columnas].append(producto)
+    return columnas
+
+
 def home(request):
     productos = cargar_productos()
+    random.shuffle(productos)
+    categorias = sorted({p['categoria'] for p in productos})
     contexto = {
-        'productos': productos,
+        'columnas': dividir_en_columnas(productos, 3),
+        'categorias': categorias,
     }
     return render(request, 'catalogo/lista.html', contexto)
 

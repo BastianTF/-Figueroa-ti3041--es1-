@@ -1,0 +1,52 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Catálogo{% endblock %}
+
+{% block contenido %}
+    <h2>Catálogo de Productos</h2>
+
+    <div class="barra-filtros">
+        <input type="text" id="buscador" placeholder="🔍 Buscar producto por nombre...">
+
+        <select id="filtro-categoria">
+            <option value="">Todas las categorías</option>
+            {% for cat in categorias %}
+            <option value="{{ cat }}">{{ cat }}</option>
+            {% endfor %}
+        </select>
+
+        <select id="filtro-precio">
+            <option value="">Todos los precios</option>
+            <option value="0-3000">Hasta $3.000</option>
+            <option value="3000-8000">$3.000 - $8.000</option>
+            <option value="8000-20000">$8.000 - $20.000</option>
+            <option value="20000-999999">Más de $20.000</option>
+        </select>
+
+        <button id="btn-limpiar" type="button">Limpiar filtros</button>
+    </div>
+
+    <div class="contenedores-wrap" id="tabla-productos">
+        {% for columna in columnas %}
+        <div class="contenedor-productos">
+            {% for producto in columna %}
+            <div class="card-producto {% if producto.stock == 0 %}sin-stock{% endif %}"
+                 data-nombre="{{ producto.nombre|lower }}"
+                 data-categoria="{{ producto.categoria }}"
+                 data-precio="{{ producto.precio }}">
+                <span class="categoria-badge">{{ producto.categoria }}</span>
+                <h3><a href="{% url 'detalle' producto.id %}">{{ producto.nombre }}</a></h3>
+                <p class="precio">${{ producto.precio }}</p>
+                <p class="stock {% if producto.stock == 0 %}agotado{% endif %}">
+                    {% if producto.stock == 0 %}
+                        Sin stock
+                    {% else %}
+                        Stock: {{ producto.stock }} unidades
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
