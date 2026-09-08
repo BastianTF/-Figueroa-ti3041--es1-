@@ -1,7 +1,7 @@
 {% extends 'catalogo/base.html' %}
 {% load formato %}
 
-{% block titulo %}{{ producto.nombre }} | Harcha Ferreteria{% endblock %}
+{% block titulo %}{{ producto.nombre }} | Harcha Ferreterías{% endblock %}
 
 {% block contenido %}
 <nav class="miga-pan" aria-label="Navegación de ubicación">
@@ -30,9 +30,10 @@
         {% if producto.stock > 0 %}
         <form method="post" action="{% url 'agregar_al_carro' producto.id %}" class="form-carro">
             {% csrf_token %}
-            <label for="cantidad">Cantidad</label>
+            <label for="cantidad">Cantidad a comprar</label>
             <div class="compra-controles">
-                <input id="cantidad" name="cantidad" type="number" min="1" max="{{ producto.stock }}" value="1">
+                <input id="cantidad" name="cantidad" type="number" min="1" max="{{ producto.stock }}" value="1" required aria-label="Cantidad a comprar">
+                <span class="cantidad-maxima">Máximo: {{ producto.stock }}</span>
                 <button type="submit" class="btn-principal">Añadir al carro</button>
             </div>
         </form>

@@ -3,11 +3,12 @@ import os
 import random
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import redirect, render
+from .forms import InicioCorreoForm, RegistroCorreoForm
 from .models import PerfilCliente, Venta
 
 
@@ -71,7 +72,7 @@ def detalle(request, producto_id):
 def iniciar_sesion(request):
     if request.user.is_authenticated:
         return redirect('panel_admin' if request.user.is_staff else 'panel_cliente')
-    formulario = AuthenticationForm(request, data=request.POST or None)
+    formulario = InicioCorreoForm(request, data=request.POST or None)
     if request.method == 'POST' and formulario.is_valid():
         login(request, formulario.get_user())
         destino = 'panel_admin' if request.user.is_staff else 'panel_cliente'
@@ -82,7 +83,11 @@ def iniciar_sesion(request):
 def crear_cuenta(request):
     if request.user.is_authenticated:
         return redirect('home')
-    formulario = UserCreationForm(request.POST or None)
+    formulario = RegistroCorreoForm(request.POST or None)
+    formulario.fields['password1'].label = 'Contraseña'
+    formulario.fields['password1'].help_text = 'La contraseña debe tener al menos 8 caracteres y no ser demasiado común.'
+    formulario.fields['password2'].label = 'Confirmar contraseña'
+    formulario.fields['password2'].help_text = 'Escribe nuevamente la misma contraseña para confirmarla.'
     if request.method == 'POST' and formulario.is_valid():
         usuario = formulario.save()
         PerfilCliente.objects.create(usuario=usuario)
@@ -99,6 +104,17 @@ def cerrar_sesion(request):
 
 def obtener_carro(request):
     return request.session.get('carro', {})
+
+
+def eliminar_del_carro(request, producto_id):
+    if request.method == 'POST':
+        carro_guardado = obtener_carro(request)
+        if str(producto_id) in carro_guardado:
+            del carro_guardado[str(producto_id)]
+            request.session['carro'] = carro_guardado
+            request.session.modified = True
+            messages.success(request, 'Producto eliminado del carro.')
+    return redirect('carro')
 
 
 def carro(request):
@@ -208,9 +224,13 @@ def finalizar_compra(request):
 def panel_admin(request):
     productos = cargar_productos()
     ventas = Venta.objects.select_related('cliente').all()
+    usuarios = User.objects.filter(is_staff=False).order_by('username')
+    for usuario in usuarios:
+        perfil_cliente(usuario)
     contexto = {
         'productos': productos,
         'ventas': ventas,
+        'usuarios': usuarios,
         'total_inventario': len(productos),
         'productos_disponibles': sum(1 for producto in productos if producto['stock'] > 0),
         'ventas_pendientes': ventas.filter(estado='pendiente').count(),

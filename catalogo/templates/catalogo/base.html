@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %}Harcha Ferretería{% endblock %}</title>
+    <meta name="description" content="Catálogo de productos de Harcha Ferreterías">
+    <title>{% block titulo %}Harcha Ferreterías{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
 </head>
 <body>
@@ -12,7 +13,7 @@
         <div class="navbar-top">
             <a href="{% url 'home' %}" class="marca">
                 <img src="{% static 'catalogo/img/logo.png' %}" alt="Logo Ferretería Harcha" class="logo">
-                <span>Harcha <strong>Ferretería</strong></span>
+                <span>Harcha <strong>Ferreterías</strong></span>
             </a>
 
             <div class="barra-busqueda-top">
@@ -21,12 +22,6 @@
             </div>
 
             <div class="navbar-acciones">
-                <div class="accion-item">
-                    <span class="icono">📍</span>
-                    <span class="texto-accion">
-                        Ingresa<br><strong>Tu ubicación</strong>
-                    </span>
-                </div>
                 <div class="accion-item">
                     <span class="icono">👤</span>
                     <span class="texto-accion">
@@ -38,7 +33,7 @@
                     </span>
                 </div>
                 <a class="accion-item accion-carro" href="{% url 'carro' %}">
-                    <span class="icono">🛒</span>
+                    <span class="icono icono-carro">🛒{% if cantidad_carro %}<span class="contador-carro">{{ cantidad_carro }}</span>{% endif %}</span>
                     <span class="texto-accion">Mi carro</span>
                 </a>
             </div>
@@ -59,8 +54,7 @@
                 {% for message in messages %}<div class="mensaje {{ message.tags }}">{{ message }}</div>{% endfor %}
             </div>
         {% endif %}
-        {% block contenido %}
-        {% endblock %}
+        {% block contenido %}{% endblock %}
     </main>
 
     <div id="visor-imagen" class="visor-imagen" aria-hidden="true">
@@ -76,6 +70,8 @@
         </div>
     </footer>
 
-    <script src="{% static 'catalogo/js/main.js' %}"></script>
+    {% block scripts %}
+        <script src="{% static 'catalogo/js/main.js' %}"></script>
+    {% endblock %}
 </body>
 </html>

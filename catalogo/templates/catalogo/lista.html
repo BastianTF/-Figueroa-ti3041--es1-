@@ -25,66 +25,62 @@
 {% endblock %}
 
 {% block contenido %}
-    <div class="catalogo-intro">
-        <div>
-            <p>Encuentra las herramientas y materiales para tu próximo proyecto.</p>
-        </div>
-    </div>
-
-    <div class="toolbar-orden">
-        <span class="orden-label">⇅ Ordenar por:</span>
-        <select id="ordenar-por">
-            <option value="destacado">Destacados</option>
-            <option value="precio-asc">Precio: menor a mayor</option>
-            <option value="precio-desc">Precio: mayor a menor</option>
-            <option value="nombre-asc">Nombre: A-Z</option>
-        </select>
-    </div>
-
-    <div class="grid-productos" id="tabla-productos">
-        {% for producto in productos %}
-        <div class="card-producto {% if producto.stock == 0 %}sin-stock{% endif %}"
-             data-nombre="{{ producto.nombre|lower }}"
-             data-categoria="{{ producto.categoria }}"
-             data-precio="{{ producto.precio }}">
-            {% if producto.stock > 0 %}
-                <div class="card-img-link imagen-ampliable" role="button" tabindex="0" aria-label="Ampliar imagen de {{ producto.nombre }}">
-                    <img src="{{ producto.imagen }}"
-                         alt="{{ producto.nombre }}"
-                         class="card-img"
-                         loading="lazy">
-                </div>
-            {% else %}
-                <div class="card-img-link imagen-bloqueada">
-                    <img src="{{ producto.imagen }}"
-                         alt="{{ producto.nombre }}"
-                         class="card-img"
-                         loading="lazy">
-                </div>
-            {% endif %}
-            <div class="card-body">
-                <h3>
-                    {% if producto.stock > 0 %}
-                        <a href="{% url 'detalle' producto.id %}">{{ producto.nombre }}</a>
-                    {% else %}
-                        <span class="producto-bloqueado">{{ producto.nombre }}</span>
-                    {% endif %}
-                </h3>
-                <p class="precio">${{ producto.precio|miles }}</p>
-                <p class="stock {% if producto.stock == 0 %}agotado{% endif %}">
-                    {% if producto.stock == 0 %}
-                        Agotado
-                    {% else %}
-                        Stock: {{ producto.stock }} unidades
-                    {% endif %}
-                </p>
-                {% if producto.stock > 0 %}
-                    <a href="{% url 'detalle' producto.id %}" class="btn-ver">Añadir al carro</a>
-                {% else %}
-                    <span class="btn-ver btn-agotado">Agotado</span>
-                {% endif %}
+    <section class="catalogo-listado" aria-labelledby="titulo-catalogo">
+        <div class="catalogo-intro">
+            <div>
+                <span class="eyebrow">Catálogo</span>
+                <h1 id="titulo-catalogo">Todos nuestros productos</h1>
+                <p>Encuentra las herramientas y materiales para tu próximo proyecto.</p>
             </div>
         </div>
-        {% endfor %}
-    </div>
+
+        <div class="toolbar-orden">
+            <span class="orden-label">⇅ Ordenar por:</span>
+            <select id="ordenar-por">
+                <option value="destacado">Destacados</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre-asc">Nombre: A-Z</option>
+            </select>
+        </div>
+
+        <div class="grid-productos" id="tabla-productos">
+            {% for producto in productos %}
+            <article class="card-producto {% if producto.stock == 0 %}sin-stock{% endif %}"
+                     data-nombre="{{ producto.nombre|lower }}"
+                     data-categoria="{{ producto.categoria }}"
+                     data-precio="{{ producto.precio }}">
+                {% if producto.stock > 0 %}
+                    <div class="card-img-link imagen-ampliable" role="button" tabindex="0" aria-label="Ampliar imagen de {{ producto.nombre }}">
+                        <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" class="card-img" loading="lazy">
+                    </div>
+                {% else %}
+                    <div class="card-img-link imagen-bloqueada">
+                        <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" class="card-img" loading="lazy">
+                    </div>
+                {% endif %}
+                <div class="card-body">
+                    <h2>
+                        {% if producto.stock > 0 %}
+                            <a href="{% url 'detalle' producto.id %}">{{ producto.nombre }}</a>
+                        {% else %}
+                            <span class="producto-bloqueado">{{ producto.nombre }}</span>
+                        {% endif %}
+                    </h2>
+                    <p class="precio">${{ producto.precio|miles }}</p>
+                    <p class="stock {% if producto.stock == 0 %}agotado{% endif %}">
+                        {% if producto.stock == 0 %}Agotado{% else %}Stock: {{ producto.stock }} unidades{% endif %}
+                    </p>
+                    {% if producto.stock > 0 %}
+                        <a href="{% url 'detalle' producto.id %}" class="btn-ver">Ver producto</a>
+                    {% else %}
+                        <span class="btn-ver btn-agotado">Agotado</span>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+                <p class="panel-seccion">No hay productos disponibles.</p>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}
