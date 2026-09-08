@@ -1,42 +1,322 @@
 [
-    {"id": 1, "nombre": "Martillo de Uña 16oz", "categoria": "Herramientas Manuales", "precio": 8990, "stock": 25, "imagen": "https://loremflickr.com/300/200/hammer,tool"},
-    {"id": 2, "nombre": "Taladro Percutor 650W", "categoria": "Herramientas Eléctricas", "precio": 45990, "stock": 8, "imagen": "https://loremflickr.com/300/200/drill,power-tool"},
-    {"id": 3, "nombre": "Set Destornilladores 6 piezas", "categoria": "Herramientas Manuales", "precio": 6990, "stock": 0, "imagen": "https://loremflickr.com/300/200/screwdriver"},
-    {"id": 4, "nombre": "Sierra Circular 1200W", "categoria": "Herramientas Eléctricas", "precio": 62990, "stock": 5, "imagen": "https://loremflickr.com/300/200/circular-saw"},
-    {"id": 5, "nombre": "Llave Ajustable 10\"", "categoria": "Herramientas Manuales", "precio": 5490, "stock": 30, "imagen": "https://loremflickr.com/300/200/wrench"},
-    {"id": 6, "nombre": "Amoladora Angular 720W", "categoria": "Herramientas Eléctricas", "precio": 38990, "stock": 0, "imagen": "https://loremflickr.com/300/200/angle-grinder"},
-    {"id": 7, "nombre": "Cinta Métrica 5m", "categoria": "Medición", "precio": 3490, "stock": 45, "imagen": "https://loremflickr.com/300/200/tape-measure"},
-    {"id": 8, "nombre": "Nivel de Burbuja 60cm", "categoria": "Medición", "precio": 7990, "stock": 18, "imagen": "https://loremflickr.com/300/200/spirit-level"},
-    {"id": 9, "nombre": "Pintura Látex Blanco 1 Galón", "categoria": "Pinturas", "precio": 15990, "stock": 20, "imagen": "https://loremflickr.com/300/200/paint-can"},
-    {"id": 10, "nombre": "Pintura Esmalte Sintético Negro 1/4 Galón", "categoria": "Pinturas", "precio": 6490, "stock": 0, "imagen": "https://loremflickr.com/300/200/paint,black"},
-    {"id": 11, "nombre": "Rodillo para Pintura 9\"", "categoria": "Pinturas", "precio": 2990, "stock": 40, "imagen": "https://loremflickr.com/300/200/paint-roller"},
-    {"id": 12, "nombre": "Brocha 3\"", "categoria": "Pinturas", "precio": 1990, "stock": 55, "imagen": "https://loremflickr.com/300/200/paintbrush"},
-    {"id": 13, "nombre": "Tornillos Autoperforantes 1\" (Caja 100 unidades)", "categoria": "Tornillería", "precio": 4990, "stock": 60, "imagen": "https://loremflickr.com/300/200/screws"},
-    {"id": 14, "nombre": "Clavos Acero 2\" (Kilo)", "categoria": "Tornillería", "precio": 2490, "stock": 35, "imagen": "https://loremflickr.com/300/200/nails"},
-    {"id": 15, "nombre": "Tuercas Hexagonales M8 (Bolsa 50 unidades)", "categoria": "Tornillería", "precio": 3990, "stock": 0, "imagen": "https://loremflickr.com/300/200/nuts,hardware"},
-    {"id": 16, "nombre": "Pernos de Expansión 3/8\" (Caja 20 unidades)", "categoria": "Tornillería", "precio": 8990, "stock": 12, "imagen": "https://loremflickr.com/300/200/bolts"},
-    {"id": 17, "nombre": "Llave de Paso 1/2\"", "categoria": "Plomería", "precio": 5990, "stock": 22, "imagen": "https://loremflickr.com/300/200/valve,plumbing"},
-    {"id": 18, "nombre": "Tubo PVC 3m (75mm)", "categoria": "Plomería", "precio": 6990, "stock": 15, "imagen": "https://loremflickr.com/300/200/pvc-pipe"},
-    {"id": 19, "nombre": "Cinta Teflón", "categoria": "Plomería", "precio": 990, "stock": 80, "imagen": "https://loremflickr.com/300/200/tape,plumbing"},
-    {"id": 20, "nombre": "Sifón Lavamanos", "categoria": "Plomería", "precio": 4490, "stock": 0, "imagen": "https://loremflickr.com/300/200/sink-drain"},
-    {"id": 21, "nombre": "Cable Eléctrico 2.5mm (Metro)", "categoria": "Electricidad", "precio": 890, "stock": 200, "imagen": "https://loremflickr.com/300/200/electric-cable"},
-    {"id": 22, "nombre": "Enchufe Doble con Tierra", "categoria": "Electricidad", "precio": 2990, "stock": 28, "imagen": "https://loremflickr.com/300/200/electrical-outlet"},
-    {"id": 23, "nombre": "Interruptor Simple", "categoria": "Electricidad", "precio": 1990, "stock": 33, "imagen": "https://loremflickr.com/300/200/light-switch"},
-    {"id": 24, "nombre": "Ampolleta LED 9W", "categoria": "Electricidad", "precio": 2490, "stock": 0, "imagen": "https://loremflickr.com/300/200/led-bulb"},
-    {"id": 25, "nombre": "Extensión Eléctrica 5m", "categoria": "Electricidad", "precio": 7990, "stock": 14, "imagen": "https://loremflickr.com/300/200/extension-cord"},
-    {"id": 26, "nombre": "Guantes de Trabajo Cuero", "categoria": "Seguridad", "precio": 4990, "stock": 40, "imagen": "https://loremflickr.com/300/200/work-gloves"},
-    {"id": 27, "nombre": "Lentes de Seguridad", "categoria": "Seguridad", "precio": 2990, "stock": 0, "imagen": "https://loremflickr.com/300/200/safety-glasses"},
-    {"id": 28, "nombre": "Casco de Seguridad", "categoria": "Seguridad", "precio": 8990, "stock": 10, "imagen": "https://loremflickr.com/300/200/hard-hat"},
-    {"id": 29, "nombre": "Mascarilla Antipolvo (Caja 10 unidades)", "categoria": "Seguridad", "precio": 5490, "stock": 25, "imagen": "https://loremflickr.com/300/200/dust-mask"},
-    {"id": 30, "nombre": "Pala Punta Cuadrada", "categoria": "Jardín", "precio": 9990, "stock": 12, "imagen": "https://loremflickr.com/300/200/shovel"},
-    {"id": 31, "nombre": "Manguera de Jardín 15m", "categoria": "Jardín", "precio": 14990, "stock": 0, "imagen": "https://loremflickr.com/300/200/garden-hose"},
-    {"id": 32, "nombre": "Tijera Podadora", "categoria": "Jardín", "precio": 6990, "stock": 18, "imagen": "https://loremflickr.com/300/200/pruning-shears"},
-    {"id": 33, "nombre": "Rastrillo Metálico", "categoria": "Jardín", "precio": 5990, "stock": 20, "imagen": "https://loremflickr.com/300/200/rake,garden"},
-    {"id": 34, "nombre": "Silicona Transparente 280ml", "categoria": "Adhesivos", "precio": 3490, "stock": 30, "imagen": "https://loremflickr.com/300/200/silicone-sealant"},
-    {"id": 35, "nombre": "Pegamento Epóxico 2 Componentes", "categoria": "Adhesivos", "precio": 4990, "stock": 0, "imagen": "https://loremflickr.com/300/200/epoxy-glue"},
-    {"id": 36, "nombre": "Cinta Aisladora Negra", "categoria": "Adhesivos", "precio": 1490, "stock": 65, "imagen": "https://loremflickr.com/300/200/electrical-tape"},
-    {"id": 37, "nombre": "Cinta de Embalaje Transparente", "categoria": "Adhesivos", "precio": 1990, "stock": 50, "imagen": "https://loremflickr.com/300/200/packing-tape"},
-    {"id": 38, "nombre": "Escalera de Aluminio 6 Peldaños", "categoria": "Herramientas Manuales", "precio": 34990, "stock": 6, "imagen": "https://loremflickr.com/300/200/ladder"},
-    {"id": 39, "nombre": "Carretilla de Obra", "categoria": "Herramientas Manuales", "precio": 39990, "stock": 0, "imagen": "https://loremflickr.com/300/200/wheelbarrow"},
-    {"id": 40, "nombre": "Caja de Herramientas 16\"", "categoria": "Herramientas Manuales", "precio": 12990, "stock": 15, "imagen": "https://loremflickr.com/300/200/toolbox"}
+    {
+        "id": 1,
+        "nombre": "Martillo de Uña 16oz",
+        "categoria": "Herramientas Manuales",
+        "precio": 8990,
+        "stock": 26,
+        "imagen": "/static/catalogo/img/Martillo_de_Uña_16oz.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Taladro Percutor 650W",
+        "categoria": "Herramientas Eléctricas",
+        "precio": 45990,
+        "stock": 8,
+        "imagen": "/static/catalogo/img/Taladro_Percutor_650W.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Set Destornilladores 6 piezas",
+        "categoria": "Herramientas Manuales",
+        "precio": 6990,
+        "stock": 10,
+        "imagen": "/static/catalogo/img/Set_Destornilladores.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Sierra Circular 1200W",
+        "categoria": "Herramientas Eléctricas",
+        "precio": 62990,
+        "stock": 5,
+        "imagen": "/static/catalogo/img/Sierra_Circular_1200W.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Llave Ajustable 10\"",
+        "categoria": "Herramientas Manuales",
+        "precio": 5490,
+        "stock": 30,
+        "imagen": "/static/catalogo/img/Llave_Ajustable.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Amoladora Angular 720W",
+        "categoria": "Herramientas Eléctricas",
+        "precio": 38990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Amoladora_Angular_720W.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Cinta Métrica 5m",
+        "categoria": "Medición",
+        "precio": 3490,
+        "stock": 45,
+        "imagen": "/static/catalogo/img/Cinta_Métrica_5m.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Nivel de Burbuja 60cm",
+        "categoria": "Medición",
+        "precio": 7990,
+        "stock": 18,
+        "imagen": "/static/catalogo/img/Nivel_de_Burbuja_60cm.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Pintura Látex Blanco 1 Galón",
+        "categoria": "Pinturas",
+        "precio": 15990,
+        "stock": 20,
+        "imagen": "/static/catalogo/img/Pintura_Látex_Blanco.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Pintura Esmalte Sintético Negro 1/4 Galón",
+        "categoria": "Pinturas",
+        "precio": 6490,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Pintura_Esmalte_Sintético_Negro.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Rodillo para Pintura 9\"",
+        "categoria": "Pinturas",
+        "precio": 2990,
+        "stock": 40,
+        "imagen": "/static/catalogo/img/Rodillo_para_Pintura.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "Brocha 3\"",
+        "categoria": "Pinturas",
+        "precio": 1990,
+        "stock": 55,
+        "imagen": "/static/catalogo/img/Brocha.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "Tornillos Autoperforantes 1\" (Caja 100 unidades)",
+        "categoria": "Tornillería",
+        "precio": 4990,
+        "stock": 60,
+        "imagen": "/static/catalogo/img/Tornillos_Autoperforantes.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Clavos Acero 2\" (Kilo)",
+        "categoria": "Tornillería",
+        "precio": 2490,
+        "stock": 35,
+        "imagen": "/static/catalogo/img/Clavos_Acero.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Tuercas Hexagonales M8 (Bolsa 50 unidades)",
+        "categoria": "Tornillería",
+        "precio": 3990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Tuercas_Hexagonales_M8.jpg"
+    },
+    {
+        "id": 16,
+        "nombre": "Pernos de Expansión 3/8\" (Caja 20 unidades)",
+        "categoria": "Tornillería",
+        "precio": 8990,
+        "stock": 12,
+        "imagen": "/static/catalogo/img/Pernos_de_Expansión.jpg"
+    },
+    {
+        "id": 17,
+        "nombre": "Llave de Paso 1/2\"",
+        "categoria": "Plomería",
+        "precio": 5990,
+        "stock": 22,
+        "imagen": "/static/catalogo/img/Llave_de_Paso.jpg"
+    },
+    {
+        "id": 18,
+        "nombre": "Tubo PVC 3m (75mm)",
+        "categoria": "Plomería",
+        "precio": 6990,
+        "stock": 15,
+        "imagen": "/static/catalogo/img/Tubo_PVC_3m_(75mm).jpg"
+    },
+    {
+        "id": 19,
+        "nombre": "Cinta Teflón",
+        "categoria": "Plomería",
+        "precio": 990,
+        "stock": 80,
+        "imagen": "/static/catalogo/img/cinta_teflon.jpg"
+    },
+    {
+        "id": 20,
+        "nombre": "Sifón Lavamanos",
+        "categoria": "Plomería",
+        "precio": 4490,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Sifón_Lavamanos.jpg"
+    },
+    {
+        "id": 21,
+        "nombre": "Cable Eléctrico 2.5mm (Metro)",
+        "categoria": "Electricidad",
+        "precio": 890,
+        "stock": 200,
+        "imagen": "/static/catalogo/img/Cable_Eléctrico_(Metro).jpg"
+    },
+    {
+        "id": 22,
+        "nombre": "Enchufe Doble con Tierra",
+        "categoria": "Electricidad",
+        "precio": 2990,
+        "stock": 28,
+        "imagen": "/static/catalogo/img/Enchufe_Doble_con_Tierra.jpg"
+    },
+    {
+        "id": 23,
+        "nombre": "Interruptor Simple",
+        "categoria": "Electricidad",
+        "precio": 1990,
+        "stock": 33,
+        "imagen": "/static/catalogo/img/Interruptor_Simple.jpg"
+    },
+    {
+        "id": 24,
+        "nombre": "Ampolleta LED 9W",
+        "categoria": "Electricidad",
+        "precio": 2490,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Ampolleta_LED_9W.jpg"
+    },
+    {
+        "id": 25,
+        "nombre": "Extensión Eléctrica 5m",
+        "categoria": "Electricidad",
+        "precio": 7990,
+        "stock": 14,
+        "imagen": "/static/catalogo/img/Extensión_Eléctrica_5m.jpg"
+    },
+    {
+        "id": 26,
+        "nombre": "Guantes de Trabajo Cuero",
+        "categoria": "Seguridad",
+        "precio": 4990,
+        "stock": 40,
+        "imagen": "/static/catalogo/img/Guantes_de_Trabajo_Cuero.jpg"
+    },
+    {
+        "id": 27,
+        "nombre": "Lentes de Seguridad",
+        "categoria": "Seguridad",
+        "precio": 2990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Lentes_de_Seguridad.jpg"
+    },
+    {
+        "id": 28,
+        "nombre": "Casco de Seguridad",
+        "categoria": "Seguridad",
+        "precio": 8990,
+        "stock": 10,
+        "imagen": "/static/catalogo/img/Casco_de_Seguridad.jpg"
+    },
+    {
+        "id": 29,
+        "nombre": "Mascarilla Antipolvo (Caja 10 unidades)",
+        "categoria": "Seguridad",
+        "precio": 5490,
+        "stock": 25,
+        "imagen": "/static/catalogo/img/Mascarilla_Antipolvo.jpg"
+    },
+    {
+        "id": 30,
+        "nombre": "Pala Punta Cuadrada",
+        "categoria": "Jardín",
+        "precio": 9990,
+        "stock": 12,
+        "imagen": "/static/catalogo/img/Pala_Punta_Cuadrada.jpg"
+    },
+    {
+        "id": 31,
+        "nombre": "Manguera de Jardín 15m",
+        "categoria": "Jardín",
+        "precio": 14990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Manguera_de_Jardín.jpg"
+    },
+    {
+        "id": 32,
+        "nombre": "Tijera Podadora",
+        "categoria": "Jardín",
+        "precio": 6990,
+        "stock": 18,
+        "imagen": "/static/catalogo/img/Tijera_Podadora.jpg"
+    },
+    {
+        "id": 33,
+        "nombre": "Rastrillo Metálico",
+        "categoria": "Jardín",
+        "precio": 5990,
+        "stock": 20,
+        "imagen": "/static/catalogo/img/Rastrillo_Metálico.jpg"
+    },
+    {
+        "id": 34,
+        "nombre": "Silicona Transparente 280ml",
+        "categoria": "Adhesivos",
+        "precio": 3490,
+        "stock": 29,
+        "imagen": "/static/catalogo/img/Silicona_Transparente_280ml.jpg"
+    },
+    {
+        "id": 35,
+        "nombre": "Pegamento Epóxico 2 Componentes",
+        "categoria": "Adhesivos",
+        "precio": 4990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Pegamento_Epóxico.jpg"
+    },
+    {
+        "id": 36,
+        "nombre": "Cinta Aisladora Negra",
+        "categoria": "Adhesivos",
+        "precio": 1490,
+        "stock": 65,
+        "imagen": "/static/catalogo/img/cinta_aisladora_negra.jpg"
+    },
+    {
+        "id": 37,
+        "nombre": "Cinta de Embalaje Transparente",
+        "categoria": "Adhesivos",
+        "precio": 1990,
+        "stock": 50,
+        "imagen": "/static/catalogo/img/Cinta_de_Embalaje_Transparente.jpg"
+    },
+    {
+        "id": 38,
+        "nombre": "Escalera de Aluminio 6 Peldaños",
+        "categoria": "Herramientas Manuales",
+        "precio": 34990,
+        "stock": 6,
+        "imagen": "/static/catalogo/img/Escalera_de_Aluminio_6_Peldaños.jpg"
+    },
+    {
+        "id": 39,
+        "nombre": "Carretilla de Obra",
+        "categoria": "Herramientas Manuales",
+        "precio": 39990,
+        "stock": 0,
+        "imagen": "/static/catalogo/img/Carretilla_de_Obra.jpg"
+    },
+    {
+        "id": 40,
+        "nombre": "Caja de Herramientas 16\"",
+        "categoria": "Herramientas Manuales",
+        "precio": 12990,
+        "stock": 15,
+        "imagen": "/static/catalogo/img/Caja_de_Herramientas.jpg"
+    }
 ]

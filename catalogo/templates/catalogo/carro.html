@@ -1,6 +1,7 @@
 {% extends 'catalogo/base.html' %}
+{% load formato %}
 
-{% block titulo %}Mi carro | Ferretería Harcha{% endblock %}
+{% block titulo %}Mi carro | Harcha Ferreteria{% endblock %}
 
 {% block contenido %}
 <section class="panel-encabezado">
@@ -16,11 +17,27 @@
         <article class="carro-item">
             <img src="{{ item.imagen }}" alt="{{ item.nombre }}">
             <div><span class="categoria-badge">{{ item.categoria }}</span><h2>{{ item.nombre }}</h2><p>Cantidad: {{ item.cantidad }}</p></div>
-            <strong>${{ item.subtotal }}</strong>
+            <strong>${{ item.subtotal|miles }}</strong>
         </article>
         {% endfor %}
     </div>
-    <aside class="resumen-carro"><h2>Resumen</h2><p>Total <strong>${{ total }}</strong></p><a href="{% url 'login' %}" class="btn-principal">Continuar con mi cuenta</a></aside>
+    <aside class="resumen-carro">
+        <h2>Resumen</h2>
+        <p>Total <strong>${{ total|miles }}</strong></p>
+        {% if user.is_authenticated and not user.is_staff %}
+            <p>Cupo disponible <strong>${{ cupo|miles }}</strong></p>
+            {% if total <= cupo %}
+                <form method="post" action="{% url 'finalizar_compra' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-principal">Pagar compra</button>
+                </form>
+            {% else %}
+                <p class="texto-agotado">El total supera tu cupo.</p>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}" class="btn-principal">Iniciar sesión para pagar</a>
+        {% endif %}
+    </aside>
 </section>
 {% else %}
 <section class="panel-seccion carro-vacio"><h2>Tu carro está vacío</h2><p>Explora el catálogo y añade los productos que necesitas.</p><a href="{% url 'home' %}" class="btn-principal enlace-boton">Ver catálogo</a></section>

@@ -11,4 +11,6 @@ urlpatterns = [
     path('panel/cliente/', views.panel_cliente, name='panel_cliente'),
         path('carro/', views.carro, name='carro'),
         path('carro/agregar/<int:producto_id>/', views.agregar_al_carro, name='agregar_al_carro'),
+        path('carro/finalizar/', views.finalizar_compra, name='finalizar_compra'),
+        path('panel/administrador/stock/<int:producto_id>/', views.actualizar_stock, name='actualizar_stock'),
 ]

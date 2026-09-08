@@ -1,6 +1,7 @@
 {% extends 'catalogo/base.html' %}
+{% load formato %}
 
-{% block titulo %}{{ producto.nombre }} | Ferretería Harcha{% endblock %}
+{% block titulo %}{{ producto.nombre }} | Harcha Ferreteria{% endblock %}
 
 {% block contenido %}
 <nav class="miga-pan" aria-label="Navegación de ubicación">
@@ -9,9 +10,11 @@
 
 <article class="ficha-producto">
     <div class="ficha-galeria">
-           <img src="{{ producto.imagen }}"
-               alt="{{ producto.nombre }}"
-               class="detalle-img">
+        <div class="detalle-imagen-ampliable imagen-ampliable" role="button" tabindex="0" aria-label="Ampliar imagen de {{ producto.nombre }}">
+            <img src="{{ producto.imagen }}"
+                 alt="{{ producto.nombre }}"
+                 class="detalle-img">
+        </div>
     </div>
     <div class="ficha-info">
         <span class="categoria-badge">{{ producto.categoria }}</span>
@@ -21,7 +24,7 @@
         {% else %}
             <p class="ficha-agotado">Producto sin stock</p>
         {% endif %}
-        <p class="ficha-precio">${{ producto.precio }}</p>
+        <p class="ficha-precio">${{ producto.precio|miles }}</p>
         <p class="ficha-descripcion">{{ producto.descripcion }}</p>
 
         {% if producto.stock > 0 %}

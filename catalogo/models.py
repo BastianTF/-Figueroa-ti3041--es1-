@@ -22,3 +22,11 @@ class Venta(models.Model):
 
 	def __str__(self):
 		return f'Venta #{self.pk} - {self.cliente.username}'
+
+
+class PerfilCliente(models.Model):
+	usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil_cliente')
+	cupo = models.PositiveIntegerField(default=100000)
+
+	def __str__(self):
+		return f'Perfil de {self.usuario.username}'

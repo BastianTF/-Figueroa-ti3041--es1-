@@ -65,4 +65,48 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const visorImagen = document.getElementById('visor-imagen');
+    const imagenAmpliada = document.getElementById('imagen-ampliada');
+    const cerrarVisor = document.getElementById('cerrar-visor');
+    const imagenesAmpliables = document.querySelectorAll('.imagen-ampliable');
+
+    function abrirVisor(contenedor) {
+        const imagen = contenedor.querySelector('img');
+        if (!imagen || !visorImagen || !imagenAmpliada) return;
+        imagenAmpliada.src = imagen.src;
+        imagenAmpliada.alt = imagen.alt;
+        visorImagen.classList.add('activo');
+        visorImagen.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('visor-abierto');
+    }
+
+    function cerrarVisorImagen() {
+        if (!visorImagen) return;
+        visorImagen.classList.remove('activo');
+        visorImagen.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('visor-abierto');
+    }
+
+    imagenesAmpliables.forEach(function (contenedor) {
+        contenedor.addEventListener('click', function () {
+            abrirVisor(contenedor);
+        });
+        contenedor.addEventListener('keydown', function (evento) {
+            if (evento.key === 'Enter' || evento.key === ' ') {
+                evento.preventDefault();
+                abrirVisor(contenedor);
+            }
+        });
+    });
+
+    if (cerrarVisor) cerrarVisor.addEventListener('click', cerrarVisorImagen);
+    if (visorImagen) {
+        visorImagen.addEventListener('click', function (evento) {
+            if (evento.target === visorImagen) cerrarVisorImagen();
+        });
+    }
+    document.addEventListener('keydown', function (evento) {
+        if (evento.key === 'Escape') cerrarVisorImagen();
+    });
+
 });
