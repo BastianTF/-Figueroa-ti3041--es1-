@@ -1,26 +1,49 @@
 {% extends 'catalogo/base.html' %}
 
-{% block titulo %}Catálogo{% endblock %}
+{% block titulo %}{{ producto.nombre }} | Ferretería Harcha{% endblock %}
 
 {% block contenido %}
-    <h2>Catálogo de Productos</h2>
+<nav class="miga-pan" aria-label="Navegación de ubicación">
+    <a href="{% url 'home' %}">Catálogo</a><span>/</span><strong>{{ producto.nombre }}</strong>
+</nav>
 
-    <input type="text" id="buscador" placeholder="🔍 Buscar producto por nombre...">
-
-    <div class="grid-productos" id="tabla-productos">
-        {% for producto in productos %}
-        <div class="card-producto {% if producto.stock == 0 %}sin-stock{% endif %}">
-            <span class="categoria-badge">{{ producto.categoria }}</span>
-            <h3><a href="{% url 'detalle' producto.id %}">{{ producto.nombre }}</a></h3>
-            <p class="precio">${{ producto.precio }}</p>
-            <p class="stock {% if producto.stock == 0 %}agotado{% endif %}">
-                {% if producto.stock == 0 %}
-                    Sin stock
-                {% else %}
-                    Stock: {{ producto.stock }} unidades
-                {% endif %}
-            </p>
-        </div>
-        {% endfor %}
+<article class="ficha-producto">
+    <div class="ficha-galeria">
+           <img src="{{ producto.imagen }}"
+               alt="{{ producto.nombre }}"
+               class="detalle-img">
     </div>
+    <div class="ficha-info">
+        <span class="categoria-badge">{{ producto.categoria }}</span>
+        <h1>{{ producto.nombre }}</h1>
+        {% if producto.stock > 0 %}
+            <p class="ficha-disponible">En stock: {{ producto.stock }} unidades</p>
+        {% else %}
+            <p class="ficha-agotado">Producto sin stock</p>
+        {% endif %}
+        <p class="ficha-precio">${{ producto.precio }}</p>
+        <p class="ficha-descripcion">{{ producto.descripcion }}</p>
+
+        {% if producto.stock > 0 %}
+        <form method="post" action="{% url 'agregar_al_carro' producto.id %}" class="form-carro">
+            {% csrf_token %}
+            <label for="cantidad">Cantidad</label>
+            <div class="compra-controles">
+                <input id="cantidad" name="cantidad" type="number" min="1" max="{{ producto.stock }}" value="1">
+                <button type="submit" class="btn-principal">Añadir al carro</button>
+            </div>
+        </form>
+        {% else %}
+            <button type="button" class="btn-principal btn-deshabilitado" disabled>Sin stock disponible</button>
+        {% endif %}
+    </div>
+</article>
+
+<section class="caracteristicas-producto">
+    <h2>Descripción y características</h2>
+    <p>{{ producto.descripcion }}</p>
+    <ul>
+        {% for caracteristica in producto.caracteristicas %}<li>{{ caracteristica }}</li>{% endfor %}
+    </ul>
+</section>
 {% endblock %}

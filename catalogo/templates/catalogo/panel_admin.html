@@ -1,0 +1,45 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Panel administrador{% endblock %}
+
+{% block contenido %}
+<section class="panel-encabezado">
+    <span class="eyebrow">Control interno</span>
+    <h1>Panel de administrador</h1>
+    <p>Inventario, ventas y operación de Ferretería Harcha.</p>
+</section>
+<div class="metricas-panel">
+    <div><strong>{{ total_inventario }}</strong><span>productos</span></div>
+    <div><strong>{{ productos_disponibles }}</strong><span>disponibles</span></div>
+    <div><strong>{{ ventas_pendientes }}</strong><span>ventas pendientes</span></div>
+    <div><strong>${{ total_ventas }}</strong><span>ventas registradas</span></div>
+</div>
+<section class="panel-seccion">
+    <div class="seccion-titulo"><h2>Inventario completo</h2><span>{{ total_inventario }} registros</span></div>
+    <div class="tabla-contenedor">
+        <table class="tabla-panel">
+            <thead><tr><th>ID</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th></tr></thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>#{{ producto.id }}</td><td>{{ producto.nombre }}</td><td>{{ producto.categoria }}</td><td>${{ producto.precio }}</td><td>{{ producto.stock }}</td>
+                    <td class="{% if producto.stock == 0 %}texto-agotado{% else %}texto-disponible{% endif %}">{% if producto.stock == 0 %}Sin stock{% else %}Disponible{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+<section class="panel-seccion">
+    <div class="seccion-titulo"><h2>Gestión de ventas</h2><span>{{ ventas|length }} registros</span></div>
+    <div class="tabla-contenedor">
+        <table class="tabla-panel">
+            <thead><tr><th>Venta</th><th>Cliente</th><th>Total</th><th>Estado</th><th>Fecha</th></tr></thead>
+            <tbody>
+                {% for venta in ventas %}<tr><td>#{{ venta.id }}</td><td>{{ venta.cliente.username }}</td><td>${{ venta.total }}</td><td>{{ venta.get_estado_display }}</td><td>{{ venta.creada_en|date:'d/m/Y H:i' }}</td></tr>
+                {% empty %}<tr><td colspan="5">Aún no hay ventas registradas.</td></tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

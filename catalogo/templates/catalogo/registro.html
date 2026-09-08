@@ -1,0 +1,23 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Crear cuenta{% endblock %}
+
+{% block contenido %}
+<section class="auth-panel">
+    <span class="eyebrow">Cliente Harcha</span>
+    <h1>Crea tu cuenta</h1>
+    <p>Guarda tus compras y consulta el estado de tus pedidos.</p>
+    <form method="post" class="formulario-auth">
+        {% csrf_token %}
+        {{ formulario.non_field_errors }}
+        {% for campo in formulario %}
+            <label for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+            {{ campo }}
+            {% if campo.help_text %}<small>{{ campo.help_text|safe }}</small>{% endif %}
+            {{ campo.errors }}
+        {% endfor %}
+        <button type="submit" class="btn-principal">Crear cuenta</button>
+    </form>
+    <p class="auth-enlace">¿Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+</section>
+{% endblock %}

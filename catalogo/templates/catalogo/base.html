@@ -27,24 +27,40 @@
                         Ingresa<br><strong>Tu ubicación</strong>
                     </span>
                 </div>
-                <div class="accion-item" id="btn-login">
+                <div class="accion-item">
                     <span class="icono">👤</span>
                     <span class="texto-accion">
-                        Hola,<br><strong>Inicia Sesión</strong>
+                        {% if user.is_authenticated %}
+                            Hola,<br><a href="{% if user.is_staff %}{% url 'panel_admin' %}{% else %}{% url 'panel_cliente' %}{% endif %}"><strong>{{ user.username }}</strong></a>
+                        {% else %}
+                            Hola,<br><a href="{% url 'login' %}"><strong>Inicia Sesión</strong></a>
+                        {% endif %}
                     </span>
                 </div>
-                <div class="accion-item">
+                <a class="accion-item accion-carro" href="{% url 'carro' %}">
                     <span class="icono">🛒</span>
-                </div>
+                    <span class="texto-accion">Mi carro</span>
+                </a>
             </div>
         </div>
 
         <nav class="navbar-categorias">
             {% block subnav %}{% endblock %}
+            {% if user.is_authenticated %}
+                <a class="subnav-item" href="{% if user.is_staff %}{% url 'panel_admin' %}{% else %}{% url 'panel_cliente' %}{% endif %}">Mi panel</a>
+                <a class="subnav-item" href="{% url 'logout' %}">Cerrar sesión</a>
+            {% else %}
+                <a class="subnav-item" href="{% url 'registro' %}">Crear cuenta</a>
+            {% endif %}
         </nav>
     </header>
 
     <main>
+        {% if messages %}
+            <div class="mensajes">
+                {% for message in messages %}<div class="mensaje {{ message.tags }}">{{ message }}</div>{% endfor %}
+            </div>
+        {% endif %}
         {% block contenido %}
         {% endblock %}
     </main>

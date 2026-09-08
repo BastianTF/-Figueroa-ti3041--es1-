@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const filtroCategoria = document.getElementById('filtro-categoria');
     const filtroPrecio = document.getElementById('filtro-precio');
     const btnLimpiar = document.getElementById('btn-limpiar');
-    const tarjetas = document.querySelectorAll('.card-producto');
+    const ordenarPor = document.getElementById('ordenar-por');
+    const grid = document.getElementById('tabla-productos');
+    const tarjetas = Array.from(document.querySelectorAll('.card-producto'));
 
     function aplicarFiltros() {
-        const texto = buscador.value.toLowerCase();
-        const categoria = filtroCategoria.value;
-        const rangoPrecio = filtroPrecio.value;
+        const texto = buscador ? buscador.value.toLowerCase() : '';
+        const categoria = filtroCategoria ? filtroCategoria.value : '';
+        const rangoPrecio = filtroPrecio ? filtroPrecio.value : '';
 
         let min = null, max = null;
         if (rangoPrecio) {
@@ -23,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const precio = parseInt(tarjeta.dataset.precio, 10);
 
             let visible = true;
-
             if (texto && !nombre.includes(texto)) visible = false;
             if (categoria && cat !== categoria) visible = false;
             if (min !== null && (precio < min || precio > max)) visible = false;
@@ -32,33 +33,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function aplicarOrden() {
+        if (!ordenarPor || !grid) return;
+        const criterio = ordenarPor.value;
+        let ordenadas = tarjetas.slice();
+
+        if (criterio === 'precio-asc') {
+            ordenadas.sort((a, b) => parseInt(a.dataset.precio) - parseInt(b.dataset.precio));
+        } else if (criterio === 'precio-desc') {
+            ordenadas.sort((a, b) => parseInt(b.dataset.precio) - parseInt(a.dataset.precio));
+        } else if (criterio === 'nombre-asc') {
+            ordenadas.sort((a, b) => a.dataset.nombre.localeCompare(b.dataset.nombre));
+        }
+
+        ordenadas.forEach(function (tarjeta) {
+            grid.appendChild(tarjeta);
+        });
+    }
+
     if (buscador) buscador.addEventListener('input', aplicarFiltros);
     if (filtroCategoria) filtroCategoria.addEventListener('change', aplicarFiltros);
     if (filtroPrecio) filtroPrecio.addEventListener('change', aplicarFiltros);
+    if (ordenarPor) ordenarPor.addEventListener('change', aplicarOrden);
 
     if (btnLimpiar) {
         btnLimpiar.addEventListener('click', function () {
-            buscador.value = '';
-            filtroCategoria.value = '';
-            filtroPrecio.value = '';
+            if (buscador) buscador.value = '';
+            if (filtroCategoria) filtroCategoria.value = '';
+            if (filtroPrecio) filtroPrecio.value = '';
             aplicarFiltros();
         });
     }
 
-    // --- Modal de login (solo visual, sin autenticación real) ---
-    const btnLogin = document.getElementById('btn-login');
-    const modalLogin = document.getElementById('modal-login');
-    const cerrarModal = document.getElementById('cerrar-modal');
-
-    if (btnLogin && modalLogin) {
-        btnLogin.addEventListener('click', function () {
-            modalLogin.classList.add('activo');
-        });
-        cerrarModal.addEventListener('click', function () {
-            modalLogin.classList.remove('activo');
-        });
-        modalLogin.addEventListener('click', function (e) {
-            if (e.target === modalLogin) modalLogin.classList.remove('activo');
-        });
-    }
 });

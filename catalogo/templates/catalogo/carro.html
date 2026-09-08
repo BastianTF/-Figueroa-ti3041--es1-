@@ -1,0 +1,28 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Mi carro | Ferretería Harcha{% endblock %}
+
+{% block contenido %}
+<section class="panel-encabezado">
+    <span class="eyebrow">Compra</span>
+    <h1>Mi carro</h1>
+    <p>Revisa los productos antes de continuar con tu compra.</p>
+</section>
+
+{% if items %}
+<section class="carro-layout">
+    <div class="carro-items">
+        {% for item in items %}
+        <article class="carro-item">
+            <img src="{{ item.imagen }}" alt="{{ item.nombre }}">
+            <div><span class="categoria-badge">{{ item.categoria }}</span><h2>{{ item.nombre }}</h2><p>Cantidad: {{ item.cantidad }}</p></div>
+            <strong>${{ item.subtotal }}</strong>
+        </article>
+        {% endfor %}
+    </div>
+    <aside class="resumen-carro"><h2>Resumen</h2><p>Total <strong>${{ total }}</strong></p><a href="{% url 'login' %}" class="btn-principal">Continuar con mi cuenta</a></aside>
+</section>
+{% else %}
+<section class="panel-seccion carro-vacio"><h2>Tu carro está vacío</h2><p>Explora el catálogo y añade los productos que necesitas.</p><a href="{% url 'home' %}" class="btn-principal enlace-boton">Ver catálogo</a></section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block contenido %}
+<section class="auth-panel">
+    <span class="eyebrow">Acceso seguro</span>
+    <h1>Inicia sesión</h1>
+    <p>Accede a tus compras o al panel de administración.</p>
+    <form method="post" class="formulario-auth">
+        {% csrf_token %}
+        {% if formulario.non_field_errors %}
+            <p class="error-formulario">Ingresa un nombre de usuario y una contraseña correctos. Recuerda que ambos campos distinguen mayúsculas y minúsculas.</p>
+        {% endif %}
+        {% for campo in formulario %}
+            <label for="{{ campo.id_for_label }}">{% if campo.name == 'username' %}Usuario{% else %}Contraseña{% endif %}</label>
+            {{ campo }}
+            {{ campo.errors }}
+        {% endfor %}
+        <button type="submit" class="btn-principal">Ingresar</button>
+    </form>
+    <p class="auth-enlace">¿No tienes cuenta? <a href="{% url 'registro' %}">Crear cuenta de cliente</a></p>
+</section>
+{% endblock %}

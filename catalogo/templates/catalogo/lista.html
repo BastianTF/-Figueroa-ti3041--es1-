@@ -17,7 +17,7 @@
         <option value="0-3000">Hasta $3.000</option>
         <option value="3000-8000">$3.000 - $8.000</option>
         <option value="8000-20000">$8.000 - $20.000</option>
-        <option value="20000-999999">Más de $20.000</option>
+        <option value="20000-999999">Más de $50.000</option>
     </select>
 
     <button id="btn-limpiar" type="button" class="subnav-item subnav-btn">Limpiar filtros</button>
@@ -29,20 +29,6 @@
             <span class="eyebrow">Ferretería Harcha</span>
             <h2>Catálogo de Productos</h2>
             <p>Encuentra las herramientas y materiales para tu próximo proyecto.</p>
-        </div>
-        <div class="resumen-catalogo" aria-label="Resumen del catálogo">
-            <div class="resumen-item">
-                <strong>{{ total_productos }}</strong>
-                <span>productos</span>
-            </div>
-            <div class="resumen-item disponible">
-                <strong>{{ productos_disponibles }}</strong>
-                <span>disponibles</span>
-            </div>
-            <div class="resumen-item agotado">
-                <strong>{{ productos_sin_stock }}</strong>
-                <span>sin stock</span>
-            </div>
         </div>
     </div>
 
@@ -63,11 +49,10 @@
              data-categoria="{{ producto.categoria }}"
              data-precio="{{ producto.precio }}">
             <a href="{% url 'detalle' producto.id %}" class="card-img-link">
-                 <img src="https://loremflickr.com/640/420/{{ producto.nombre|urlencode }},{{ producto.categoria|urlencode }}?lock={{ producto.id }}"
-                     alt="Fotografía de {{ producto.nombre }}"
+                 <img src="{{ producto.imagen }}"
+                     alt="{{ producto.nombre }}"
                      class="card-img"
-                     loading="lazy"
-                     onerror="this.onerror=null; this.src='https://placehold.co/640x420/f59e0b/ffffff?text={{ producto.categoria|urlencode }}';">
+                     loading="lazy">
             </a>
             <div class="card-body">
                 <span class="categoria-badge">{{ producto.categoria }}</span>
@@ -85,7 +70,7 @@
                         Stock: {{ producto.stock }} unidades
                     {% endif %}
                 </p>
-                <a href="{% url 'detalle' producto.id %}" class="btn-ver">Ver producto</a>
+                <a href="{% url 'detalle' producto.id %}" class="btn-ver">Añadir al carro</a>
             </div>
         </div>
         {% endfor %}
